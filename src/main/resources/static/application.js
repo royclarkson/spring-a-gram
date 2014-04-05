@@ -149,6 +149,29 @@
         $('#images table').append(createItemRow(item));
     }
 
+    window.extra = {};
+    window.extra.get = function(resource) {
+        var promise = $.ajax({
+            type: 'GET',
+            url: resource
+        });
+        var rel = function(resource, relName) {
+            if (resource._links) {
+                if (resource._links[relName].templated) {
+                    return window.extra.get(resource._links[relName].href.split('{')[0]);
+                } else {
+                    return window.extra.get(resource._links[relName].href);
+                }
+            }
+        }
+        promise.rel = function(relName) {
+            return promise.then(function(results) {
+                return rel(results, relName);
+            });
+        }
+        return promise;
+    };
+
     /* When the page is loaded, run/register this set of code */
     $(function () {
 
