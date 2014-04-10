@@ -48,7 +48,8 @@
 
     <properties>
 		<spring-data-jpa.version>1.6.0.BUILD-SNAPSHOT</spring-data-jpa.version>
-		<spring-data-rest.version>2.1.0.BUILD-SNAPSHOT</spring-data-rest.version>
+		<spring-data-rest.version>2.1.0.ALPS-SNAPSHOT</spring-data-rest.version>
+		<spring-hateoas.version>0.10.0.ALPS-SNAPSHOT</spring-hateoas.version>
     </properties>
 
     <build>
