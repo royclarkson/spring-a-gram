@@ -1,5 +1,7 @@
 package com.greglturnquist.springagram;
 
+import org.springframework.data.rest.core.annotation.Description;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,9 +17,11 @@ public class Gallery {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	@Description("Short description of this gallery")
 	private String description;
 
 	@OneToMany(mappedBy = "gallery")
+	@Description("Collection of pics found in this gallery")
 	private List<Item> items;
 
 	public long getId() {
